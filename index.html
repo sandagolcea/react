@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>First Look</title>
+  <script src="https://fb.me/react-0.13.3.js"></script>
+  <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+</head>
+<body>
+  <div id="main-list"></div>
+  <script type='text/jsx'>
+
+  var MainList = React.createClass({
+    render: function () {
+      return (
+        <div>
+          Hello world.
+        </div>
+      );
+    }
+  });
+
+  React.render(
+    <MainList/>, 
+      document.getElementById('main-list')
+  );
+
+  </script>
+</body>
+</html>
