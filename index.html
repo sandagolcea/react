@@ -15,6 +15,25 @@
       return (
         <div>
           Hello world.
+          <NestedItem
+            title="First Nested Item"
+            detail="this is a nested item description"
+          />
+          <NestedItem
+            title="Second Nested Item"
+            detail="this is yet another nested item description"
+          />
+        </div>
+      );
+    }
+  });
+
+  var NestedItem = React.createClass({
+    render: function () {
+      return (
+        <div>
+          <h3>{this.props.title}</h3>
+          <p>{this.props.detail}</p>
         </div>
       );
     }
