@@ -10,37 +10,62 @@
   <div id="main-list"></div>
   <script type='text/jsx'>
 
-  var MainList = React.createClass({
+  var Recipe = React.createClass({
+    getInitialState: function () {
+      console.log(this.props);
+      return null;
+    },
     render: function () {
       return (
         <div>
-          Hello world.
-          <NestedItem
-            title="First Nested Item"
-            detail="this is a nested item description"
+          <h3>{this.props.title}</h3>
+          <p>{this.props.description}</p>
+        </div>
+      );
+    }
+  });
+  var RecipeBook = React.createClass({
+    render: function () {
+      return (
+        <div>
+          <h2>Hello world, I am a RecipeBook</h2>
+          <RecipeList />
+          <RecipeForm />
+        </div>
+      );
+    }
+  });
+
+  var RecipeList = React.createClass({
+    render: function () {
+      return (
+        <div>
+          <h4>Recipe List</h4>
+          <Recipe
+            title="Carbonara"
+            description="A traditional italian pasta dish, made with eggs, bacon and other ingredients"
           />
-          <NestedItem
-            title="Second Nested Item"
-            detail="this is yet another nested item description"
+          <Recipe
+            title="Quiche"
+            description="French dish that has a base pate-sable and a creamy mixture of creme fraiche with regional ingredients"
           />
         </div>
       );
     }
   });
 
-  var NestedItem = React.createClass({
+  var RecipeForm = React.createClass({
     render: function () {
       return (
         <div>
-          <h3>{this.props.title}</h3>
-          <p>{this.props.detail}</p>
+          <h4>Recipe form</h4>
         </div>
       );
     }
   });
 
   React.render(
-    <MainList/>, 
+    <RecipeBook/>, 
       document.getElementById('main-list')
   );
 
