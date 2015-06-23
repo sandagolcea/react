@@ -8,6 +8,7 @@
 </head>
 <body>
   <div id="main-list"></div>
+
   <script type='text/jsx'>
 
   var Recipe = React.createClass({
@@ -24,33 +25,24 @@
       );
     }
   });
-  var RecipeBook = React.createClass({
-    render: function () {
-      return (
-        <div>
-          <h2>Hello world, I am a RecipeBook</h2>
-          <RecipeList />
-          <RecipeForm />
-        </div>
-      );
-    }
-  });
 
   var RecipeList = React.createClass({
     render: function () {
+      var recipeNodes = this.props.data.map(function (recipe, index) {
       return (
-        <div>
-          <h4>Recipe List</h4>
           <Recipe
-            title="Carbonara"
-            description="A traditional italian pasta dish, made with eggs, bacon and other ingredients"
+            key = {index}
+            title = {recipe.title}
+            description = {recipe.description}
           />
-          <Recipe
-            title="Quiche"
-            description="French dish that has a base pate-sable and a creamy mixture of creme fraiche with regional ingredients"
-          />
-        </div>
-      );
+      )
+    })
+    return (
+      <div>
+        RecipeList.
+        {recipeNodes}
+      </div>
+    )
     }
   });
 
@@ -64,8 +56,24 @@
     }
   });
 
+  var RecipeBook = React.createClass({
+  render: function () {
+    return (
+      <div>
+        <h2>Hello world, I am a RecipeBook</h2>
+        <RecipeList data = {this.props.data}/>
+        <RecipeForm />
+      </div>
+    );
+  }
+});
+
+  window.recipeData = [
+    {title: "Carbonara", description: "A traditional italian pasta dish, made with eggs, bacon and other ingredients"},
+    {title: "Quiche", description: "French dish that has a base pate-sable and a creamy mixture of creme fraiche with regional ingredients"}
+  ]
   React.render(
-    <RecipeBook/>, 
+    <RecipeBook data = {window.recipeData}/>, 
       document.getElementById('main-list')
   );
 
